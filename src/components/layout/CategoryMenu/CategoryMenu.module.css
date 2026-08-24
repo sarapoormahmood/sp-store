@@ -1,0 +1,21 @@
+.categoryMenu {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.categoryMenu span {
+  color: #315c3a;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.categoryMenu span:hover {
+  color: #7aa35a;
+}

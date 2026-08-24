@@ -1,0 +1,67 @@
+.hero {
+  width: 100%;
+  min-height: 300px;
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px;
+}
+
+
+.content {
+  width: 40%;
+}
+
+
+.content h1 {
+  font-size: 42px;
+  color: #236b33;
+  margin-bottom: 20px;
+}
+
+
+.content p {
+  font-size: 18px;
+  color: #ecdf6b;
+  line-height: 2;
+  margin-bottom: 30px;
+}
+
+
+.content button {
+  background-color: #f5efe3;
+  color: #315c3a;
+  border: 1px solid #d8d2c4;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.content button:hover {
+  background-color: #7aa35a;
+}
+
+
+.imageBox img {
+  border-radius: 25px;
+}
+
+
+.productsButton {
+  display: inline-block;
+  background-color: #f5efe3;
+  color: #315c3a;
+  border: 1px solid #d8d2c4;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.productsButton:hover {
+  background-color: #315c3a;
+  color: white;
+}

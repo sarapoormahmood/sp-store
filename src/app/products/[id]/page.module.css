@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  gap: 60px;
+  padding: 50px;
+  align-items: center;
+}
+
+
+.imageBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  border-radius: 40px;
+}
+
+
+.info {
+  flex: 1;
+}
+
+
+.title {
+  font-size: 32px;
+  color: #203825;
+}
+
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+
+.colors {
+  display: flex;
+  gap: 12px;
+}
+
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+
+.sizes {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+
+.size {
+  width: 45px;
+  height: 35px;
+  border: 1px solid #ccc;
+  background: rgb(8, 8, 8);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+
+.cartButton {
+  margin-top: 20px;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 12px;
+  background: #314e37;
+  color: white;
+  cursor: pointer;
+}
