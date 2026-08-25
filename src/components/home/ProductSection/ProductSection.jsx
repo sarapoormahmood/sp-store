@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,15 +14,21 @@ export default function ProductSection() {
   useEffect(() => {
     async function loadProducts() {
       try {
-        const response = await fetch("/api/products");
+        const response = await fetch("/api/products", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error("خطا در دریافت محصولات");
+        }
+
         const data = await response.json();
 
-        if (Array.isArray(data)) {
-          setProducts(data);
-        } else {
-          console.error("داده محصولات آرایه نیست:", data);
-          setProducts([]);
+        if (!Array.isArray(data)) {
+          throw new Error("داده محصولات معتبر نیست");
         }
+
+        setProducts(data);
       } catch (error) {
         console.error("خطا در دریافت محصولات:", error);
       }
@@ -60,7 +67,6 @@ export default function ProductSection() {
 
       {/* فیلترها */}
       <div className={styles.filters}>
-
         {/* قیمت */}
         <select
           value={price}
@@ -102,18 +108,19 @@ export default function ProductSection() {
           <option value="XXL">XXL</option>
           <option value="فری‌سایز">فری‌سایز</option>
         </select>
-
       </div>
 
       {/* محصولات */}
       <div className={styles.productsGrid}>
         {filteredProducts.length > 0 ? (
-          filteredProducts.slice(0, 8).map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))
+          filteredProducts
+            .slice(0, 8)
+            .map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+              />
+            ))
         ) : (
           <p>محصولی با این مشخصات پیدا نشد.</p>
         )}
@@ -121,3 +128,4 @@ export default function ProductSection() {
     </section>
   );
 }
+

@@ -1,21 +1,25 @@
 .navbar {
   width: 100%;
-  height: 80px;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 30px;
   padding: 0 60px;
   background-color: #f5efe3;
+  box-sizing: border-box;
 }
 
 .logo {
   font-size: 32px;
   font-weight: bold;
   color: #315c3a;
+  flex-shrink: 0;
 }
 
 .search {
   width: 40%;
+  max-width: 500px;
 }
 
 .search input {
@@ -24,6 +28,8 @@
   border-radius: 25px;
   border: 1px solid #ddd;
   outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
 .actions {
@@ -32,6 +38,7 @@
   align-items: center;
   color: #315c3a;
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 .actions span {
@@ -55,62 +62,113 @@
   position: absolute;
   top: -10px;
   right: -12px;
-
   min-width: 20px;
   height: 20px;
-
   padding: 0 5px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: #315c3a;
   color: white;
-
   border-radius: 50%;
-
   font-size: 12px;
   font-weight: bold;
 }
 
 .favorite {
   position: relative;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
-
   color: #315c3a;
-
   font-size: 24px;
-
   cursor: pointer;
 }
 
-
 .favoriteCount {
   position: absolute;
-
   top: -10px;
   right: -12px;
-
   min-width: 20px;
   height: 20px;
-
   padding: 0 5px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: #315c3a;
   color: white;
-
   border-radius: 50%;
-
   font-size: 12px;
   font-weight: bold;
+}
+
+/* تبلت */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 25px;
+    gap: 20px;
+  }
+
+  .search {
+    width: 35%;
+  }
+
+  .actions {
+    gap: 15px;
+  }
+}
+
+/* موبایل */
+@media (max-width: 600px) {
+  .navbar {
+    min-height: 125px;
+    padding: 15px 16px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 45px 45px;
+    gap: 10px 15px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
+
+  .actions {
+    justify-content: flex-end;
+    gap: 14px;
+  }
+
+  .search {
+    width: 100%;
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .search input {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .favorite {
+    font-size: 22px;
+  }
+
+  .cart {
+    font-size: 20px;
+  }
+
+  .cartCount,
+  .favoriteCount {
+    top: -8px;
+    right: -9px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+
+  .authLinks {
+    font-size: 13px;
+    white-space: nowrap;
+  }
 }
