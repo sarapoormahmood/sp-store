@@ -1,6 +1,5 @@
-import { writeFile } from "fs/promises";
-import path from "path";
-import { randomUUID } from "crypto";
+
+import { put } from "@vercel/blob";
 
 export async function POST(request) {
   try {
@@ -15,34 +14,23 @@ export async function POST(request) {
       );
     }
 
-    if (!file.type.startsWith("image/")) {
+    if (!file.type || !file.type.startsWith("image/")) {
       return Response.json(
         { error: "فایل باید تصویر باشد" },
         { status: 400 }
       );
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    const extension = file.name?.split(".").pop() || "jpg";
+    const fileName = `products / ${crypto.randomUUID()}.${extension} `;
 
-    const extension = path.extname(file.name);
-
-    const fileName = `${randomUUID()}${extension}`;
-
-    const uploadDir = path.join(
-      process.cwd(),
-      "public",
-      "uploads",
-      "products"
-    );
-
-    const filePath = path.join(uploadDir, fileName);
-
-    await writeFile(filePath, buffer);
+    const blob = await put(fileName, file, {
+      access: "public",
+    });
 
     return Response.json({
       success: true,
-      image: `/uploads/products/${fileName}`,
+      image: blob.url,
     });
   } catch (error) {
     console.error("Upload error:", error);
