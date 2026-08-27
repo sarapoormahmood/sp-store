@@ -21,8 +21,18 @@ export async function POST(request) {
       );
     }
 
-    const extension = file.name?.split(".").pop() || "jpg";
-    const fileName = `products / ${crypto.randomUUID()}.${extension} `;
+    if (file.size > 10 * 1024 * 1024) {
+      return Response.json(
+        { error: "حجم عکس نباید بیشتر از ۱۰ مگابایت باشد" },
+        { status: 400 }
+      );
+    }
+
+    const extension =
+      file.name?.split(".").pop()?.toLowerCase() || "jpg";
+
+    // اسم فایل بدون فاصله
+    const fileName = `products/${crypto.randomUUID()}.${extension}`;
 
     const blob = await put(fileName, file, {
       access: "public",
@@ -41,3 +51,4 @@ export async function POST(request) {
     );
   }
 }
+
